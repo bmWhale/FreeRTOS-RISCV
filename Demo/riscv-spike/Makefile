@@ -133,7 +133,8 @@ all: $(PROG).elf
 $(PROG).elf  : $(OBJS) Makefile 
 	@echo Linking....
 	@$(GCC) -o $@ $(LDFLAGS) $(OBJS) $(LIBS)
-	@$(OBJDUMP) -S $(PROG).elf > $(PROG).asm	
+	@$(OBJDUMP) -S $(PROG).elf > $(PROG).asm
+	@$(OBJDUMP) -h -D -l --show-raw-insn -S $(PROG).elf > $(PROG).list
 	@echo Completed $@
 
 clean :
